@@ -19,7 +19,7 @@
 #     NAME => q[I18N::Handle]
 #     NO_META => q[1]
 #     PREREQ_PM => { ExtUtils::MakeMaker=>q[6.42] }
-#     VERSION => q[0.01]
+#     VERSION => q[undef]
 #     VERSION_FROM => q[lib/I18N/Handle.pm]
 #     dist => { PREOP=>q[$(PERL) -I. "-MModule::Install::Admin" -e "dist_preop(q($(DISTVNAME)))"] }
 #     realclean => { FILES=>q[MYMETA.yml] }
@@ -62,11 +62,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = I18N::Handle
 NAME_SYM = I18N_Handle
-VERSION = 0.01
+VERSION = undef
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_01
+VERSION_SYM = undef
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.01
+XS_VERSION = undef
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -188,9 +188,12 @@ PERL_ARCHIVE       =
 PERL_ARCHIVE_AFTER = 
 
 
-TO_INST_PM = lib/I18N/Handle.pm
+TO_INST_PM = lib/I18N/Handle.pm \
+	lib/I18N/Handle/Base.pm
 
-PM_TO_BLIB = lib/I18N/Handle.pm \
+PM_TO_BLIB = lib/I18N/Handle/Base.pm \
+	blib/lib/I18N/Handle/Base.pm \
+	lib/I18N/Handle.pm \
 	blib/lib/I18N/Handle.pm
 
 
@@ -260,7 +263,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = I18N-Handle
-DISTVNAME = I18N-Handle-0.01
+DISTVNAME = I18N-Handle-undef
 
 
 # --- MakeMaker macro section:
@@ -768,7 +771,7 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.01">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="undef">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>A common i18n handler for web frameworks and applications.</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Yoan Lin &lt;cornelius.howl {at} gmail.com&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
@@ -782,6 +785,7 @@ ppd :
 
 pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
+	  lib/I18N/Handle/Base.pm blib/lib/I18N/Handle/Base.pm \
 	  lib/I18N/Handle.pm blib/lib/I18N/Handle.pm 
 	$(NOECHO) $(TOUCH) pm_to_blib
 

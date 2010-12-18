@@ -8,33 +8,49 @@ I18N::Handle - A common i18n handler for web frameworks and applications.
 
 Ideas are welcome. just drop me a line.
 
-    use I18N::Handle;
+option `import` takes the same arguments as [Locale::Maketext::Lexicon](http://search.cpan.org/perldoc?Locale::Maketext::Lexicon) takes.
+it's _language_ => [ _format_ => _source_ ].
     
 
+    use I18N::Handle;
     my $handle = I18N::Handle->new( 
-            en => 'po/en.po', 
-            fr => 'po/fr.po',
-            jp => 'po/jp.po'
-                )->accept( qw(en fr) )->speak( 'en' );
+                import => {
+                        en => [ Gettext => 'po/en.po' ],
+                        fr => [ Gettext => 'po/fr.po' ],
+                        jp => [ Gettext => 'po/jp.po' ],
+                })->accept( qw(en fr) )->speak( 'en' );
+
+Or a simple way to import gettext po files:
+This will transform the args to the args that `import` option takes:
+
+    use I18N::Handle;
+    my $handle = I18N::Handle->new( 
+                Gettext => {
+                        en => 'po/en.po',
+                        fr => 'po/fr.po',
+                        jp => [ 'po/jp.po' , 'po2/jp.po' ],
+                })->accept( qw(en fr) )->speak( 'en' );
+
+
 
     print _('Hello world');
 
     $handle->speak( 'fr' );
     $handle->speak( 'jp' );
+    $handle->speaking;  # return 'jp'
 
     my @langs = $handle->can_speak();  # return 'en', 'fr', 'jp'
 
 or
 
     $handle = I18N::Handle->new( 
-            po => 'path/to/po'
+            po => 'path/to/po',
+            style => 'gettext'          # use gettext style format (default)
                 )->speak( 'en' );
 
     print _('Hello world');
 
-
-
-or 
+or
 
     $handle = I18N::Handle->new(
             locale => 'path/to/locale'
@@ -60,6 +76,50 @@ Connect to google translation:
 # DESCRIPTION
 
 [I18N::Handle](http://search.cpan.org/perldoc?I18N::Handle) is a common handler for web frameworks and applications.
+
+
+
+# OPTIONS
+
+- _Gettext | Msgcat | Slurp | Tie_ => {  language => source , ... }
+
+- po => 'path' | [ path1 , path2 ]
+
+- locale => 'path' | [ path1 , path2 ]
+
+- import => Arguments to [Locale::Maketext::Lexicon](http://search.cpan.org/perldoc?Locale::Maketext::Lexicon)
+
+# OPTIONAL OPTIONS
+
+- style => 'gettext'  ... (Optional)
+
+- loc => 'global loc function name'  (Optional)
+
+
+
+# PUBLIC METHODS 
+
+## new
+
+## speak
+
+## speaking
+
+## can_speak
+
+## accept
+
+## fallback
+
+# PRIVATE METHODS
+
+
+
+
+
+
+
+
 
 # AUTHOR
 
