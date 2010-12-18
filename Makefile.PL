@@ -2,7 +2,10 @@ use inc::Module::Install;
 name 'I18N-Handle';
 all_from 'lib/I18N/Handle.pm';
 
-# requires '';
+requires 'Moose';
+requires 'Locale::Maketext::Lexicon';
+requires 'Locale::Maketext';
+requires 'File::Find::Rule';
 
 tests 't/*.t';
 author_tests 'xt';
