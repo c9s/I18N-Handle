@@ -18,7 +18,7 @@
 #     LICENSE => q[perl]
 #     NAME => q[I18N::Handle]
 #     NO_META => q[1]
-#     PREREQ_PM => { ExtUtils::MakeMaker=>q[6.42] }
+#     PREREQ_PM => { File::Find::Rule=>q[0], Locale::Maketext::Lexicon=>q[0], ExtUtils::MakeMaker=>q[6.42], Locale::Maketext=>q[0], Moose=>q[0] }
 #     VERSION => q[0.01]
 #     VERSION_FROM => q[lib/I18N/Handle.pm]
 #     dist => { PREOP=>q[$(PERL) -I. "-MModule::Install::Admin" -e "dist_preop(q($(DISTVNAME)))"] }
@@ -775,6 +775,10 @@ ppd :
 	$(NOECHO) $(ECHO) '    <ABSTRACT>A common i18n handler for web frameworks and applications.</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Yoan Lin &lt;cornelius.howl {at} gmail.com&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Find::Rule" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Locale::Maketext" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Locale::Maketext::Lexicon" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Moose::" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="i686-linux-gnu-thread-multi-5.10" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd

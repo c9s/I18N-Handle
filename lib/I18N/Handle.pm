@@ -199,6 +199,8 @@ __END__
 
 I18N::Handle - A common i18n handler for web frameworks and applications.
 
+=head1 ***THIS MODULE IS STILL IN DEVELOPMENT***
+
 =head1 DESCRIPTION
 
 L<I18N::Handle> is a common handler for web frameworks and applications.
@@ -208,8 +210,6 @@ You can use L<App::I18N> to generate po/mo files, then use this module
 to handle these languages.
 
 =head1 SYNOPSIS
-
-***This module is under-developing***
 
 Ideas are welcome. just drop me a line.
 

@@ -2,6 +2,14 @@
 
 I18N::Handle - A common i18n handler for web frameworks and applications.
 
+# DESCRIPTION
+
+[I18N::Handle](http://search.cpan.org/perldoc?I18N::Handle) is a common handler for web frameworks and applications.
+
+You can use [App::I18N](http://search.cpan.org/perldoc?App::I18N) to generate po/mo files, then use this module 
+
+to handle these languages.
+
 # SYNOPSIS
 
 ***This module is under-developing***
@@ -73,10 +81,6 @@ Connect to google translation:
 
     $handle = I18N::Handle->new( google => "" );
 
-# DESCRIPTION
-
-[I18N::Handle](http://search.cpan.org/perldoc?I18N::Handle) is a common handler for web frameworks and applications.
-
 
 
 # OPTIONS
@@ -113,10 +117,6 @@ will be found. can you can get these langauges:
 
 
 
-
-
-
-
 - import => Arguments to [Locale::Maketext::Lexicon](http://search.cpan.org/perldoc?Locale::Maketext::Lexicon)
 
 
@@ -137,15 +137,29 @@ The default loc function name is `_`.
 
 ## new
 
-## speak
+## speak( I<language> )
 
-## speaking
+setup current language. _language_, can be `en`, `fr` and so on..
 
-## can_speak
+## speaking()
 
-## accept
+get current speaking language name.
 
-## fallback
+## can_speak()
+
+return a list that currently supported.
+
+## accept( I<language name list> )
+
+setup accept languages.
+
+    $hl->accpet( qw(en fr) );
+
+## fallback( I<language> )
+
+setup fallback language. when speak() fails , fallback to this language.
+
+    $hl->fallback( 'en' );
 
 # PRIVATE METHODS
 
@@ -160,6 +174,8 @@ The default loc function name is `_`.
 Yoan Lin <cornelius.howl {at} gmail.com>
 
 # SEE ALSO
+
+[App::I18N](http://search.cpan.org/perldoc?App::I18N)
 
 # LICENSE
 
