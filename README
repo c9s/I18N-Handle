@@ -1,0 +1,27 @@
+This is Perl module I18N::Handle.
+
+INSTALLATION
+
+I18N::Handle installation is straightforward. If your CPAN shell is set up,
+you should just be able to do
+
+    % cpan I18N::Handle
+
+Download it, unpack it, then build it as per the usual:
+
+    % perl Makefile.PL
+    % make && make test
+
+Then install it:
+
+    % make install
+
+DOCUMENTATION
+
+I18N::Handle documentation is available as in POD. So you can do:
+
+    % perldoc I18N::Handle
+
+to read the documentation online with your favorite pager.
+
+Default Name
