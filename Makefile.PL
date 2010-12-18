@@ -10,4 +10,7 @@ author_tests 'xt';
 test_requires 'Test::More';
 auto_set_repository;
 auto_include;
+
+readme_markdown_from 'lib/I18N/Handle.pm';
+
 WriteAll;
