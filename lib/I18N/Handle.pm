@@ -135,8 +135,10 @@ sub _scan_locale_files {
 
 sub speak {
     my ($self,$lang) = @_;
-    $self->base->speak( $lang );
-    # $$DynamicLH = $self->get_handle($lang ? $lang : ()) if $DynamicLH;
+    if( grep { $lang eq $_ } $self->can_speak ) {
+        $self->current( $lang );
+        $self->base->speak( $lang );
+    }
 }
 
 sub accept {
@@ -144,6 +146,8 @@ sub accept {
     for my $lang ( map { $self->_unify_langtag( $_ ) } @langs ) { 
         if( grep { $lang eq $_ } $self->can_speak ) {
             $self->add_accept( $lang );
+        } else {
+            warn "Not accept language $lang..";
         }
     }
     return $self;
@@ -270,13 +274,43 @@ L<I18N::Handle> is a common handler for web frameworks and applications.
 
 =for 4 
 
-=item I<Gettext | Msgcat | Slurp | Tie> => {  language => source , ... }
+=item I<format> => { I<language> => I<source> , ... }
 
-=item po => 'path' | [ path1 , path2 ]
+Format could be I<Gettext | Msgcat | Slurp | Tie>.
+
+    use I18N::Handle;
+    my $hl = I18N::Handle->new( 
+                Gettext => {
+                        en => 'po/en.po',
+                        fr => 'po/fr.po',
+                        jp => [ 'po/jp.po' , 'po2/jp.po' ],
+                });
+    $hl->speak( 'en' );
+
+=item po => 'I<path>' | [ I<path1> , I<path2> ]
+
+Suppose you have these files:
+
+    po/en.po
+    po/zh_TW.po
+
+When using:
+
+    I18N::Handle->new( po => 'po' );
+
+will be found. can you can get these langauges:
+
+    [ en , zh-tw ]
 
 =item locale => 'path' | [ path1 , path2 ]
 
+
+
+
 =item import => Arguments to L<Locale::Maketext::Lexicon>
+
+
+
 
 =back
 
@@ -284,9 +318,13 @@ L<I18N::Handle> is a common handler for web frameworks and applications.
 
 =for 4
 
-=item style => 'gettext'  ... (Optional)
+=item style => I<style>  ... (Optional)
 
-=item loc => 'global loc function name'  (Optional)
+The style could be C<gettext>.
+
+=item loc => I<global loc function name>  (Optional)
+
+The default loc function name is C<_>.
 
 =back
 
@@ -307,9 +345,11 @@ L<I18N::Handle> is a common handler for web frameworks and applications.
 
 =head1 PRIVATE METHODS
 
+=head2 _unify_langtag
 
+=head2 _scan_po_files
 
-
+=head2 _scan_locale_files
 
 =head1 AUTHOR
 
