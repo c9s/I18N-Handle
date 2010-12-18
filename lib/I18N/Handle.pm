@@ -12,6 +12,8 @@ I18N::Handle - A common i18n handler for web frameworks and applications.
 
 =head1 SYNOPSIS
 
+***This module is under-developing***
+
     use I18N::Handle;
     
     my $handle = I18N::Handle->new( 
@@ -41,6 +43,21 @@ or
             locale => 'path/to/locale'
             )->speak( 'en_US' );
 
+
+Connect to a translation server:
+
+    $handle = I18N::Handle->new( 
+            server => 'translate.me' )->speak( 'en_US' );
+
+Connect to a database:
+
+    $handle = I18N::Handle->new(
+            dsn => 'DBI:mysql:database=$database;host=$hostname;port=$port;'
+            );
+
+Connect to google translation:
+
+    $handle = I18N::Handle->new( google => "" );
 
 =head1 DESCRIPTION
 
