@@ -2,6 +2,8 @@
 
 I18N::Handle - A common i18n handler for web frameworks and applications.
 
+# ***THIS MODULE IS STILL IN DEVELOPMENT***
+
 # DESCRIPTION
 
 [I18N::Handle](http://search.cpan.org/perldoc?I18N::Handle) is a common handler for web frameworks and applications.
@@ -11,8 +13,6 @@ You can use [App::I18N](http://search.cpan.org/perldoc?App::I18N) to generate po
 to handle these languages.
 
 # SYNOPSIS
-
-***This module is under-developing***
 
 Ideas are welcome. just drop me a line.
 
