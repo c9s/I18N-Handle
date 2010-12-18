@@ -28,6 +28,7 @@ Ideas are welcome. just drop me a line.
 
     $handle->speak( 'fr' );
     $handle->speak( 'jp' );
+    $handle->speaking;  # return 'jp'
 
     my @langs = $handle->can_speak();  # return 'en', 'fr', 'jp'
 
@@ -39,8 +40,7 @@ or
 
     print _('Hello world');
 
-
-or 
+or
 
     $handle = I18N::Handle->new(
             locale => 'path/to/locale'
@@ -65,6 +65,23 @@ Connect to google translation:
 =head1 DESCRIPTION
 
 L<I18N::Handle> is a common handler for web frameworks and applications.
+
+=head1 PUBLIC METHODS 
+
+=head2 new
+
+=head2 speak
+
+=head2 speaking
+
+=head2 can_speak
+
+=head2 accept
+
+=head1 PRIVATE METHODS
+
+
+
 
 =head1 AUTHOR
 
