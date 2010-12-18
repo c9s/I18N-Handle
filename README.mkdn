@@ -81,19 +81,55 @@ Connect to google translation:
 
 # OPTIONS
 
-- _Gettext | Msgcat | Slurp | Tie_ => {  language => source , ... }
+- _format_ => { _language_ => _source_ , ... }
 
-- po => 'path' | [ path1 , path2 ]
+Format could be _Gettext | Msgcat | Slurp | Tie_.
+
+    use I18N::Handle;
+    my $hl = I18N::Handle->new( 
+                Gettext => {
+                        en => 'po/en.po',
+                        fr => 'po/fr.po',
+                        jp => [ 'po/jp.po' , 'po2/jp.po' ],
+                });
+    $hl->speak( 'en' );
+
+- po => '_path_' | [ _path1_ , _path2_ ]
+
+Suppose you have these files:
+
+    po/en.po
+    po/zh_TW.po
+
+When using:
+
+    I18N::Handle->new( po => 'po' );
+
+will be found. can you can get these langauges:
+
+    [ en , zh-tw ]
 
 - locale => 'path' | [ path1 , path2 ]
 
+
+
+
+
+
+
 - import => Arguments to [Locale::Maketext::Lexicon](http://search.cpan.org/perldoc?Locale::Maketext::Lexicon)
+
+
 
 # OPTIONAL OPTIONS
 
-- style => 'gettext'  ... (Optional)
+- style => _style_  ... (Optional)
 
-- loc => 'global loc function name'  (Optional)
+The style could be `gettext`.
+
+- loc => _global loc function name_  (Optional)
+
+The default loc function name is `_`.
 
 
 
@@ -113,13 +149,11 @@ Connect to google translation:
 
 # PRIVATE METHODS
 
+## _unify_langtag
 
+## _scan_po_files
 
-
-
-
-
-
+## _scan_locale_files
 
 # AUTHOR
 

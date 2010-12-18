@@ -6,6 +6,8 @@ use I18N::Handle::Base;
 use File::Find::Rule;
 use Locale::Maketext::Lexicon ();
 
+our $VERSION = 0.01;
+
 has base => ( is => 'rw' );
 
 has accept_langs => (
@@ -272,7 +274,7 @@ L<I18N::Handle> is a common handler for web frameworks and applications.
 
 =head1 OPTIONS
 
-=for 4 
+=over 4 
 
 =item I<format> => { I<language> => I<source> , ... }
 
@@ -310,13 +312,11 @@ will be found. can you can get these langauges:
 =item import => Arguments to L<Locale::Maketext::Lexicon>
 
 
-
-
 =back
 
 =head1 OPTIONAL OPTIONS
 
-=for 4
+=over 4
 
 =item style => I<style>  ... (Optional)
 
