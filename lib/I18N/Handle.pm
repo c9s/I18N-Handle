@@ -199,6 +199,14 @@ __END__
 
 I18N::Handle - A common i18n handler for web frameworks and applications.
 
+=head1 DESCRIPTION
+
+L<I18N::Handle> is a common handler for web frameworks and applications.
+
+You can use L<App::I18N> to generate po/mo files, then use this module 
+
+to handle these languages.
+
 =head1 SYNOPSIS
 
 ***This module is under-developing***
@@ -267,10 +275,6 @@ Connect to google translation:
 
     $handle = I18N::Handle->new( google => "" );
 
-=head1 DESCRIPTION
-
-L<I18N::Handle> is a common handler for web frameworks and applications.
-
 
 =head1 OPTIONS
 
@@ -307,8 +311,6 @@ will be found. can you can get these langauges:
 =item locale => 'path' | [ path1 , path2 ]
 
 
-
-
 =item import => Arguments to L<Locale::Maketext::Lexicon>
 
 
@@ -333,15 +335,29 @@ The default loc function name is C<_>.
 
 =head2 new
 
-=head2 speak
+=head2 speak( I<language> )
 
-=head2 speaking
+setup current language. I<language>, can be C<en>, C<fr> and so on..
 
-=head2 can_speak
+=head2 speaking()
 
-=head2 accept
+get current speaking language name.
 
-=head2 fallback
+=head2 can_speak()
+
+return a list that currently supported.
+
+=head2 accept( I<language name list> )
+
+setup accept languages.
+
+    $hl->accpet( qw(en fr) );
+
+=head2 fallback( I<language> )
+
+setup fallback language. when speak() fails , fallback to this language.
+
+    $hl->fallback( 'en' );
 
 =head1 PRIVATE METHODS
 
@@ -356,6 +372,8 @@ The default loc function name is C<_>.
 Yoan Lin E<lt>cornelius.howl {at} gmail.comE<gt>
 
 =head1 SEE ALSO
+
+L<App::I18N>
 
 =head1 LICENSE
 
