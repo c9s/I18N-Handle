@@ -8,19 +8,47 @@ __END__
 
 =head1 NAME
 
-I18N::Handle -
+I18N::Handle - A common i18n handler for web frameworks and applications.
 
 =head1 SYNOPSIS
 
-  use I18N::Handle;
+    use I18N::Handle;
+    
+    my $handle = I18N::Handle->new( 
+            en => 'po/en.po', 
+            fr => 'po/fr.po',
+            jp => 'po/jp.po'
+                )->accept( qw(en fr) )->speak( 'en' );
+
+    print _('Hello world');
+
+    $handle->speak( 'fr' );
+    $handle->speak( 'jp' );
+
+
+or
+
+    $handle = I18N::Handle->new( 
+            po => 'path/to/po'
+                )->speak( 'en' );
+
+    print _('Hello world');
+
+
+or 
+
+    $handle = I18N::Handle->new(
+            locale => 'path/to/locale'
+            )->speak( 'en_US' );
+
 
 =head1 DESCRIPTION
 
-I18N::Handle is
+L<I18N::Handle> is a common handler for web frameworks and applications.
 
 =head1 AUTHOR
 
-Default Name E<lt>default {at} example.comE<gt>
+Yoan Lin E<lt>cornelius.howl {at} gmail.comE<gt>
 
 =head1 SEE ALSO
 
