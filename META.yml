@@ -1,7 +1,7 @@
 ---
-abstract: ~
+abstract: 'A common i18n handler for web frameworks and applications.'
 author:
-  - 'Default Name <default {at} example.com>'
+  - 'Yoan Lin <cornelius.howl {at} gmail.com>'
 build_requires:
   ExtUtils::MakeMaker: 6.42
 configure_requires:
@@ -20,4 +20,5 @@ no_index:
     - xt
 resources:
   license: http://dev.perl.org/licenses/
+  repository: git://github.com/c9s/I18N-Handle.git
 version: 0.01

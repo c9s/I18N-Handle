@@ -1,0 +1,54 @@
+# NAME
+
+I18N::Handle - A common i18n handler for web frameworks and applications.
+
+# SYNOPSIS
+
+    use I18N::Handle;
+    
+
+    my $handle = I18N::Handle->new( 
+            en => 'po/en.po', 
+            fr => 'po/fr.po',
+            jp => 'po/jp.po'
+                )->accept( qw(en fr) )->speak( 'en' );
+
+    print _('Hello world');
+
+    $handle->speak( 'fr' );
+    $handle->speak( 'jp' );
+
+
+
+or
+
+    $handle = I18N::Handle->new( 
+            po => 'path/to/po'
+                )->speak( 'en' );
+
+    print _('Hello world');
+
+
+
+or 
+
+    $handle = I18N::Handle->new(
+            locale => 'path/to/locale'
+            )->speak( 'en_US' );
+
+
+
+# DESCRIPTION
+
+[I18N::Handle](http://search.cpan.org/perldoc?I18N::Handle) is a common handler for web frameworks and applications.
+
+# AUTHOR
+
+Yoan Lin <cornelius.howl {at} gmail.com>
+
+# SEE ALSO
+
+# LICENSE
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.

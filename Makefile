@@ -11,7 +11,8 @@
 
 #   MakeMaker Parameters:
 
-#     AUTHOR => q[Default Name <default {at} example.com>]
+#     ABSTRACT => q[A common i18n handler for web frameworks and applications.]
+#     AUTHOR => q[Yoan Lin <cornelius.howl {at} gmail.com>]
 #     BUILD_REQUIRES => { ExtUtils::MakeMaker=>q[6.42] }
 #     DISTNAME => q[I18N-Handle]
 #     LICENSE => q[perl]
@@ -768,8 +769,8 @@ testdb_static :: testdb_dynamic
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
 	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.01">' > $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <ABSTRACT></ABSTRACT>' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <AUTHOR>Default Name &lt;default {at} example.com&gt;</AUTHOR>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <ABSTRACT>A common i18n handler for web frameworks and applications.</ABSTRACT>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '    <AUTHOR>Yoan Lin &lt;cornelius.howl {at} gmail.com&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="i686-linux-gnu-thread-multi-5.10" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
