@@ -14,6 +14,8 @@ I18N::Handle - A common i18n handler for web frameworks and applications.
 
 ***This module is under-developing***
 
+Ideas are welcome. just drop me a line.
+
     use I18N::Handle;
     
     my $handle = I18N::Handle->new( 
@@ -27,6 +29,7 @@ I18N::Handle - A common i18n handler for web frameworks and applications.
     $handle->speak( 'fr' );
     $handle->speak( 'jp' );
 
+    my @langs = $handle->can_speak();  # return 'en', 'fr', 'jp'
 
 or
 
