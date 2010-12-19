@@ -21,7 +21,7 @@ it's _language_ => [ _format_ => _source_ ].
     
 
     use I18N::Handle;
-    my $handle = I18N::Handle->new( 
+    my $hl = I18N::Handle->new( 
                 import => {
                         en => [ Gettext => 'po/en.po' ],
                         fr => [ Gettext => 'po/fr.po' ],
@@ -32,7 +32,7 @@ Or a simple way to import gettext po files:
 This will transform the args to the args that `import` option takes:
 
     use I18N::Handle;
-    my $handle = I18N::Handle->new( 
+    my $hl = I18N::Handle->new( 
                 Gettext => {
                         en => 'po/en.po',
                         fr => 'po/fr.po',
@@ -43,33 +43,72 @@ This will transform the args to the args that `import` option takes:
 
     print _('Hello world');
 
-    $handle->speak( 'fr' );
-    $handle->speak( 'jp' );
-    $handle->speaking;  # return 'jp'
+    $hl->speak( 'fr' );
+    $hl->speak( 'jp' );
+    $hl->speaking;  # return 'jp'
 
-    my @langs = $handle->can_speak();  # return 'en', 'fr', 'jp'
+    my @langs = $hl->can_speak();  # return 'en', 'fr', 'jp'
 
-or
+# USE CASES
 
-    $handle = I18N::Handle->new( 
+## Handling po files
+
+    $hl = I18N::Handle->new( 
             po => 'path/to/po',
             style => 'gettext'          # use gettext style format (default)
                 )->speak( 'en' );
 
     print _('Hello world');
 
-or
 
-    $handle = I18N::Handle->new(
+
+## Handling locale
+
+If you need to bind the locale directory structure like this:
+
+    po/en/LC_MESSAGES/app.po
+    po/en/LC_MESSAGES/app.mo
+    po/zh_tw/LC_MESSAGES/app.po
+    po/zh_tw/LC_MESSAGES/app.mo
+
+You can just pass the `locale` option:
+
+    $hl = I18N::Handle->new(
             locale => 'path/to/locale'
             )->speak( 'en_US' );
 
 
 
+## Singleton
+
+If you need a singleton [I18N::Handle](http://search.cpan.org/perldoc?I18N::Handle), this is a helper function to return
+the singleton object:
+
+    $hl = I18N::Handle->singleton( locale => 'path/to/locale' );
+
+In your applications, might be like this:
+
+    sub get_i18n {
+        my $class = shift;
+        return I18N::Handle->singleton( ... options ... )
+    }
+
+
+
+## Connect to a remote i18n server
+
+__not implemented yet__
+
 Connect to a translation server:
 
     $handle = I18N::Handle->new( 
             server => 'translate.me' )->speak( 'en_US' );
+
+
+
+## Binding with database
+
+__not implemented yet__
 
 Connect to a database:
 
@@ -77,11 +116,13 @@ Connect to a database:
             dsn => 'DBI:mysql:database=$database;host=$hostname;port=$port;'
             );
 
+## Binding with Google translation service
+
+__not implemented yet__
+
 Connect to google translation:
 
     $handle = I18N::Handle->new( google => "" );
-
-
 
 # OPTIONS
 
@@ -98,7 +139,7 @@ Format could be _Gettext | Msgcat | Slurp | Tie_.
                 });
     $hl->speak( 'en' );
 
-- po => '_path_' | [ _path1_ , _path2_ ]
+- `po` => '_path_' | [ _path1_ , _path2_ ]
 
 Suppose you have these files:
 
@@ -113,29 +154,30 @@ will be found. can you can get these langauges:
 
     [ en , zh-tw ]
 
-- locale => 'path' | [ path1 , path2 ]
+- `locale` => 'path' | [ path1 , path2 ]
 
 
 
-- import => Arguments to [Locale::Maketext::Lexicon](http://search.cpan.org/perldoc?Locale::Maketext::Lexicon)
-
-
+- `import` => Arguments to [Locale::Maketext::Lexicon](http://search.cpan.org/perldoc?Locale::Maketext::Lexicon)
 
 # OPTIONAL OPTIONS
 
-- style => _style_  ... (Optional)
+- `style` => _style_  ... (Optional)
 
 The style could be `gettext`.
 
-- loc => _global loc function name_  (Optional)
+- `loc` => _global loc function name_  (Optional)
 
 The default loc function name is `_`.
-
-
 
 # PUBLIC METHODS 
 
 ## new
+
+## singleton( I<options> )
+
+If you need a singleton [I18N::Handle](http://search.cpan.org/perldoc?I18N::Handle), this is a helper function to return
+the singleton object.
 
 ## speak( I<language> )
 
