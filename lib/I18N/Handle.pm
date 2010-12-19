@@ -267,95 +267,6 @@ This will transform the args to the args that C<import> option takes:
 
     my @langs = $hl->can_speak();  # return 'en', 'fr', 'jp'
 
-=head1 USE CASES
-
-=head2 Handling po files
-
-    $hl = I18N::Handle->new( 
-            po => 'path/to/po',
-            style => 'gettext'          # use gettext style format (default)
-                )->speak( 'en' );
-
-    print _('Hello world');
-
-
-=head2 Handling locale
-
-If you need to bind the locale directory structure like this:
-
-    po/en/LC_MESSAGES/app.po
-    po/en/LC_MESSAGES/app.mo
-    po/zh_tw/LC_MESSAGES/app.po
-    po/zh_tw/LC_MESSAGES/app.mo
-
-You can just pass the C<locale> option:
-
-    $hl = I18N::Handle->new(
-            locale => 'path/to/locale'
-            )->speak( 'en_US' );
-
-or just use C<import>:
-
-    $hl = I18N::Handle->new( 
-            import => { '*' => 'locale/*/LC_MESSAGES/hello.mo'  } );
-
-=head2 Handling json files
-
-B<not implemented yet>
-
-Ensure you have json files:
-
-    json/en.json
-    json/fr.json
-    json/ja.json
-
-Then specify the C<json> option:
-
-    $hl = I18N::Handle->new( json => 'json' );
-
-=head2 Singleton
-
-If you need a singleton L<I18N::Handle>, this is a helper function to return
-the singleton object:
-
-    $hl = I18N::Handle->singleton( locale => 'path/to/locale' );
-
-In your applications, might be like this:
-
-    sub get_i18n {
-        my $class = shift;
-        return I18N::Handle->singleton( ... options ... )
-    }
-
-
-=head2 Connect to a remote i18n server
-
-B<not implemented yet>
-
-Connect to a translation server:
-
-    $handle = I18N::Handle->new( 
-            server => 'translate.me' )->speak( 'en_US' );
-
-
-=head2 Binding with database
-
-B<not implemented yet>
-
-Connect to a database:
-
-    $handle = I18N::Handle->new(
-            dsn => 'DBI:mysql:database=$database;host=$hostname;port=$port;'
-            );
-
-=head2 Binding with Google translation service
-
-B<not implemented yet>
-
-Connect to google translation:
-
-    $handle = I18N::Handle->new( google => "" );
-
 =head1 OPTIONS
 
 =over 4 
@@ -449,6 +360,111 @@ setup fallback language. when speak() fails , fallback to this language.
 =head2 _scan_po_files
 
 =head2 _scan_locale_files
+
+
+
+
+=head1 USE CASES
+
+=head2 Handling po files
+
+    $hl = I18N::Handle->new( 
+            po => 'path/to/po',
+            style => 'gettext'          # use gettext style format (default)
+                )->speak( 'en' );
+
+    print _('Hello world');
+
+
+=head2 Handling locale
+
+If you need to bind the locale directory structure like this:
+
+    po/en/LC_MESSAGES/app.po
+    po/en/LC_MESSAGES/app.mo
+    po/zh_tw/LC_MESSAGES/app.po
+    po/zh_tw/LC_MESSAGES/app.mo
+
+You can just pass the C<locale> option:
+
+    $hl = I18N::Handle->new(
+            locale => 'path/to/locale'
+            )->speak( 'en_US' );
+
+or just use C<import>:
+
+    $hl = I18N::Handle->new( 
+            import => { '*' => 'locale/*/LC_MESSAGES/hello.mo'  } );
+
+=head2 Handling json files
+
+B<not implemented yet>
+
+Ensure you have json files:
+
+    json/en.json
+    json/fr.json
+    json/ja.json
+
+Then specify the C<json> option:
+
+    $hl = I18N::Handle->new( json => 'json' );
+
+=head2 Singleton
+
+If you need a singleton L<I18N::Handle>, this is a helper function to return
+the singleton object:
+
+    $hl = I18N::Handle->singleton( locale => 'path/to/locale' );
+
+In your applications, might be like this:
+
+    sub get_i18n {
+        my $class = shift;
+        return I18N::Handle->singleton( ... options ... )
+    }
+
+
+=head2 Connect to a remote i18n server
+
+B<not implemented yet>
+
+Connect to a translation server:
+
+    $handle = I18N::Handle->new( 
+            server => 'translate.me' )->speak( 'en_US' );
+
+
+=head2 Binding with database
+
+B<not implemented yet>
+
+Connect to a database:
+
+    $handle = I18N::Handle->new(
+            dsn => 'DBI:mysql:database=$database;host=$hostname;port=$port;'
+            );
+
+=head2 Binding with Google translation service
+
+B<not implemented yet>
+
+Connect to google translation:
+
+    $handle = I18N::Handle->new( google => "" );
+
+=head2 Exporting loc function to Text::Xslate
+
+    my $tx = Text::Xslate->new( 
+        path => ['templates'], 
+        cache_dir => ".xslate_cache", 
+        cache => 1,
+        function => { "_" => \&_ } );
+
+Then you can use C<_> function inside your L<Text::Xslate> templates:
+
+    <: _('Hello') :>
+
 
 =head1 AUTHOR
 
