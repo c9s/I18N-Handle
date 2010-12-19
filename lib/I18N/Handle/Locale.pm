@@ -1,4 +1,4 @@
-package I18N::Handle::Base;
+package I18N::Handle::Locale;
 use warnings;
 use strict;
 use base qw(Locale::Maketext);
@@ -46,7 +46,7 @@ sub get_dynamicLH { return $DynamicLH; }
 sub speak {
     my ( $self, $lang ) = @_;
     $$DynamicLH = $self->get_handle($lang ? $lang : ()) if $DynamicLH;
+    # warn $$DynamicLH; # get I18N::Handle::Locale::zh_tw,en ...
 }
-
 
 1;

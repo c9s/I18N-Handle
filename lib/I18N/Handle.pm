@@ -2,7 +2,7 @@ package I18N::Handle;
 use warnings;
 use strict;
 use Moose;
-use I18N::Handle::Base;
+use I18N::Handle::Locale;
 use File::Find::Rule;
 use Locale::Maketext::Lexicon ();
 
@@ -95,7 +95,7 @@ sub BUILD {
 
     $import{_style} = $args{style} if( $args{style} );
 
-    $self->base( I18N::Handle::Base->new( \%import ) );
+    $self->base( I18N::Handle::Locale->new( \%import ) );
     $self->base->init;
 
     my $loc_name = $args{'loc'} || '_';
