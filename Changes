@@ -1,4 +1,8 @@
 Revision history for Perl extension I18N::Handle
 
+0.02    
+        - Added singleton method.
+        - More documents
+
 0.01    Sun Dec 19 01:03:06 2010
         - original version
