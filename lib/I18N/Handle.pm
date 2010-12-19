@@ -104,6 +104,8 @@ sub BUILD {
     return $self;
 }
 
+
+
 sub singleton {
     my ($class,%args) = @_;
     return $singleton ||= $class->new( %args );
@@ -220,9 +222,9 @@ __END__
 
 I18N::Handle - A common i18n handler for web frameworks and applications.
 
-=head1 ***THIS MODULE IS STILL IN DEVELOPMENT***
-
 =head1 DESCRIPTION
+
+B<***THIS MODULE IS STILL IN DEVELOPMENT***>
 
 L<I18N::Handle> is a common handler for web frameworks and applications.
 
@@ -292,6 +294,10 @@ You can just pass the C<locale> option:
             locale => 'path/to/locale'
             )->speak( 'en_US' );
 
+or just use C<import>:
+
+    $hl = I18N::Handle->new( 
+            import => { '*' => 'locale/*/LC_MESSAGES/hello.mo'  } );
 
 =head2 Handling json files
 
