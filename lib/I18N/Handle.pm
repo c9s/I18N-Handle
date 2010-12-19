@@ -198,7 +198,7 @@ sub install_global_loc {
 }
 
 
-# __PACKAGE__->meta->make_immutable();
+__PACKAGE__->meta->make_immutable;
 1;
 __END__
 
@@ -260,16 +260,33 @@ or
 
     print _('Hello world');
 
-or
+
+
+
+
+If you need to bind the locale directory structure like this:
+
+    po/en/LC_MESSAGES/app.po
+    po/en/LC_MESSAGES/app.mo
+    po/zh_tw/LC_MESSAGES/app.po
+    po/zh_tw/LC_MESSAGES/app.mo
+
+You can just pass the C<locale> option:
 
     $handle = I18N::Handle->new(
             locale => 'path/to/locale'
             )->speak( 'en_US' );
 
+
+
+
+
 If you need a singleton L<I18N::Handle>, this is a helper function to return
-the singleton object, See L<I18N::Handle/singleton>.
+the singleton object:
 
     $hl = I18N::Handle->singleton( locale => 'path/to/locale' );
+
+
 
 
 Connect to a translation server:
@@ -341,7 +358,6 @@ The style could be C<gettext>.
 The default loc function name is C<_>.
 
 =back
-
 
 =head1 PUBLIC METHODS 
 
