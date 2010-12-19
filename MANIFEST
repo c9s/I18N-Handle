@@ -14,7 +14,7 @@ inc/Module/Install/WriteAll.pm
 inc/Pod/Markdown.pm
 inc/Test/More.pm
 lib/I18N/Handle.pm
-lib/I18N/Handle/Base.pm
+lib/I18N/Handle/Locale.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml
