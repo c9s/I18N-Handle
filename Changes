@@ -1,5 +1,8 @@
 Revision history for Perl extension I18N::Handle
 
+0.03
+        - More pods
+
 0.02    
         - Added singleton method.
         - More documents
