@@ -33,6 +33,8 @@ has langs => (
 
 has current => ( is => 'rw' );  # current language
 
+our $singleton;
+
 sub BUILDARGS {
     my $self = shift;
     my %args = @_;
@@ -98,6 +100,11 @@ sub BUILD {
 
     __PACKAGE__->install_global_loc( $loc_name , $self->base->get_dynamicLH );
     return $self;
+}
+
+sub singleton {
+    my ($class,%args) = @_;
+    return $singleton ||= $class->new( %args );
 }
 
 # translate zh_TW => zh-tw
@@ -259,6 +266,11 @@ or
             locale => 'path/to/locale'
             )->speak( 'en_US' );
 
+If you need a singleton L<I18N::Handle>, this is a helper function to return
+the singleton object, See L<I18N::Handle/singleton>.
+
+    $hl = I18N::Handle->singleton( locale => 'path/to/locale' );
+
 
 Connect to a translation server:
 
@@ -334,6 +346,11 @@ The default loc function name is C<_>.
 =head1 PUBLIC METHODS 
 
 =head2 new
+
+=head2 singleton( I<options> )
+
+If you need a singleton L<I18N::Handle>, this is a helper function to return
+the singleton object.
 
 =head2 speak( I<language> )
 
