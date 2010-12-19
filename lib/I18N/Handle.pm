@@ -293,6 +293,20 @@ You can just pass the C<locale> option:
             )->speak( 'en_US' );
 
 
+=head2 Handling json files
+
+B<not implemented yet>
+
+Ensure you have json files:
+
+    json/en.json
+    json/fr.json
+    json/ja.json
+
+Then specify the C<json> option:
+
+    $hl = I18N::Handle->new( json => 'json' );
+
 =head2 Singleton
 
 If you need a singleton L<I18N::Handle>, this is a helper function to return
