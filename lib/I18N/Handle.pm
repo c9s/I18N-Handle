@@ -33,6 +33,8 @@ has langs => (
 
 has current => ( is => 'rw' );  # current language
 
+has fallback_lang => ( is => 'rw' );
+
 our $singleton;
 
 sub BUILDARGS {
@@ -147,7 +149,13 @@ sub speak {
     if( grep { $lang eq $_ } $self->can_speak ) {
         $self->current( $lang );
         $self->base->speak( $lang );
+    } else {
+        if ( $self->fallback_lang ) {
+            $self->current( $self->fallback_lang );
+            $self->base->speak( $self->fallback_lang );
+        } 
     }
+    return $self;
 }
 
 sub accept {
@@ -162,6 +170,12 @@ sub accept {
     return $self;
 }
 
+# XXX: check locale::maketext fallback option.
+sub fallback {
+    my ($self,$lang) = @_;
+    $self->fallback_lang( $lang );
+    return $self;
+}
 
 sub install_global_loc {
     my ($class, $loc_name , $dlh) = @_;
