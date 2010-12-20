@@ -118,53 +118,6 @@ function.
             return $text;
     }
 
-# PUBLIC METHODS 
-
-## new
-
-## singleton( I<options> )
-
-If you need a singleton [I18N::Handle](http://search.cpan.org/perldoc?I18N::Handle), this is a helper function to return
-the singleton object.
-
-## speak( I<language> )
-
-setup current language. _language_, can be `en`, `fr` and so on..
-
-## speaking()
-
-get current speaking language name.
-
-## can_speak()
-
-return a list that currently supported.
-
-## accept( I<language name list> )
-
-setup accept languages.
-
-    $hl->accpet( qw(en fr) );
-
-## fallback( I<language> )
-
-setup fallback language. when speak() fails , fallback to this language.
-
-    $hl->fallback( 'en' );
-
-# PRIVATE METHODS
-
-## _unify_langtag
-
-## _scan_po_files
-
-## _scan_locale_files
-
-
-
-
-
-
-
 # USE CASES
 
 ## Handling po files
@@ -268,6 +221,55 @@ Connect to google translation:
 Then you can use `_` function inside your [Text::Xslate](http://search.cpan.org/perldoc?Text::Xslate) templates:
 
     <: _('Hello') :>
+
+# PUBLIC METHODS 
+
+## new
+
+## singleton( _options_ )
+
+If you need a singleton [I18N::Handle](http://search.cpan.org/perldoc?I18N::Handle), this is a helper function to return
+the singleton object.
+
+## speak( _language_ )
+
+setup current language. _language_, can be `en`, `fr` and so on..
+
+## speaking()
+
+get current speaking language name.
+
+## can_speak()
+
+return a list that currently supported.
+
+## accept( _language name list_ )
+
+setup accept languages.
+
+    $hl->accpet( qw(en fr) );
+
+## fallback( _language_ )
+
+setup fallback language. when speak() fails , fallback to this language.
+
+    $hl->fallback( 'en' );
+
+# PRIVATE METHODS
+
+## _unify_langtag
+
+## _scan_po_files
+
+## _scan_locale_files
+
+
+
+
+
+
+
+
 
 
 

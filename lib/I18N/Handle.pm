@@ -6,7 +6,7 @@ use I18N::Handle::Locale;
 use File::Find::Rule;
 use Locale::Maketext::Lexicon ();
 
-our $VERSION = '0.04';
+our $VERSION = '0.041';
 
 has base => ( is => 'rw' );
 
