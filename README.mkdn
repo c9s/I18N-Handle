@@ -99,9 +99,24 @@ will be found. can you can get these langauges:
 
 The style could be `gettext`.
 
-- `loc` => _global loc function name_  (Optional)
+- `loc` => _global loc function name_ (Optional)
 
-The default loc function name is `_`.
+The default global loc function name is `_`. 
+
+    loc => 'loc'
+
+- `loc_func` => _CodeRef_  (Optional)
+
+Use a custom global localization function instead of default localization
+function.
+
+    loc_func => sub {
+            my ($self,$lang_handle) = @_;
+
+            ...
+
+            return $text;
+    }
 
 # PUBLIC METHODS 
 

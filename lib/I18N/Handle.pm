@@ -102,6 +102,7 @@ sub BUILD {
     my $loc_name = $args{'loc'} || '_';
 
     if( $args{loc_func} ) {
+        my $loc_func = $args{loc_func};
         {
             no strict 'refs';
             no warnings 'redefine';
