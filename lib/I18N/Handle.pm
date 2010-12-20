@@ -228,9 +228,17 @@ B<***THIS MODULE IS STILL IN DEVELOPMENT***>
 
 L<I18N::Handle> is a common handler for web frameworks and applications.
 
-You can use L<App::I18N> to generate po/mo files, then use this module 
+I18N::Handle also provides exporting a global loc function to make localization, 
+the default loc function name is C<"_">. To change the exporting loc function name
+, please use C<loc> option.
 
-to handle these languages.
+The difference between I18N::Handle and L<Locale::Maketext> is that
+I18N::Handle automatically does most things for you, and it provides simple API
+like C<speak>, C<can_speak> instead of C<get_handle>, C<languages>.
+
+To generate po/mo files, L<App::I18N> is an utility for this, App::I18N is a
+command-line tool for parsing, exporting, managing, editing, translating i18n
+messages. See also L<App::I18N>.
 
 =head1 SYNOPSIS
 

@@ -159,10 +159,10 @@ setup fallback language. when speak() fails , fallback to this language.
 
 If you need to bind the locale directory structure like this:
 
-    po/en/LC_MESSAGES/app.po
-    po/en/LC_MESSAGES/app.mo
-    po/zh_tw/LC_MESSAGES/app.po
-    po/zh_tw/LC_MESSAGES/app.mo
+    path/to/locale/en/LC_MESSAGES/app.po
+    path/to/locale/en/LC_MESSAGES/app.mo
+    path/to/locale/zh_tw/LC_MESSAGES/app.po
+    path/to/locale/zh_tw/LC_MESSAGES/app.mo
 
 You can just pass the `locale` option:
 
