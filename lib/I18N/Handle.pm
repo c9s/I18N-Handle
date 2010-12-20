@@ -98,12 +98,22 @@ sub BUILD {
     $self->base( I18N::Handle::Locale->new( \%import ) );
     $self->base->init;
 
+
     my $loc_name = $args{'loc'} || '_';
 
-    __PACKAGE__->install_global_loc( $loc_name , $self->base->get_dynamicLH );
+    if( $args{loc_func} ) {
+        {
+            no strict 'refs';
+            no warnings 'redefine';
+            *{ '::'.$loc_name } = sub { 
+                return $loc_func->( $self, $self->base->get_dynamicLH );
+            };
+        }
+    } else {
+        __PACKAGE__->install_global_loc( $loc_name , $self->base->get_dynamicLH );
+    }
     return $self;
 }
-
 
 
 sub singleton {
@@ -208,7 +218,6 @@ sub install_global_loc {
     {
         no strict 'refs';
         no warnings 'redefine';
-        # *_ = $loc_method;
         *{ '::'.$loc_name } = $loc_method;
     }
 }
@@ -322,9 +331,24 @@ will be found. can you can get these langauges:
 
 The style could be C<gettext>.
 
-=item C<loc> => I<global loc function name>  (Optional)
+=item C<loc> => I<global loc function name> (Optional)
 
-The default loc function name is C<_>.
+The default global loc function name is C<_>. 
+
+    loc => 'loc'
+
+=item C<loc_func> => I<CodeRef>  (Optional)
+
+Use a custom global localization function instead of default localization
+function.
+
+    loc_func => sub {
+            my ($self,$lang_handle) = @_;
+
+            ...
+
+            return $text;
+    }
 
 =back
 
