@@ -157,6 +157,12 @@ sub _scan_locale_files {
     return %langs;
 }
 
+
+sub speaking {
+    my $self = shift;
+    return $self->current();
+}
+
 sub speak {
     my ($self,$lang) = @_;
     if( grep { $lang eq $_ } $self->can_speak ) {

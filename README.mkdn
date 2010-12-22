@@ -226,12 +226,12 @@ Then you can use `_` function inside your [Text::Xslate](http://search.cpan.org/
 
 ## new
 
-## singleton( _options_ )
+## singleton( I<options> )
 
 If you need a singleton [I18N::Handle](http://search.cpan.org/perldoc?I18N::Handle), this is a helper function to return
 the singleton object.
 
-## speak( _language_ )
+## speak( I<language> )
 
 setup current language. _language_, can be `en`, `fr` and so on..
 
@@ -243,13 +243,13 @@ get current speaking language name.
 
 return a list that currently supported.
 
-## accept( _language name list_ )
+## accept( I<language name list> )
 
 setup accept languages.
 
     $hl->accpet( qw(en fr) );
 
-## fallback( _language_ )
+## fallback( I<language> )
 
 setup fallback language. when speak() fails , fallback to this language.
 
