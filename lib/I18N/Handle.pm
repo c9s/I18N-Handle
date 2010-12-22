@@ -214,12 +214,12 @@ sub install_global_loc {
         my @stringified_args = map {"$_"} @_;
         my $result = eval { ${$dlh}->maketext(@stringified_args) };
         if ($@) {
-            warn $@;
             # Sometimes Locale::Maketext fails to localize a string and throws
             # an exception instead.  In that case, we just return the input.
+            warn $@;
             return join(' ', @stringified_args);
         }
-        return $result;
+        return $result || @_;
     };
 
     {
