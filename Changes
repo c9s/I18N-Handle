@@ -1,5 +1,8 @@
 Revision history for Perl extension I18N::Handle
 
+0.042   Wed 22 Dec 2010 01:15:33 PM CST
+        - speaking method
+
 0.04
         - loc_func option.
 

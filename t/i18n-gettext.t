@@ -3,7 +3,7 @@ use warnings;
 use strict;
 use lib 'lib';
 use utf8;
-use Test::More tests => 8;
+use Test::More tests => 9;
 BEGIN {
     use_ok 'I18N::Handle';
 }
