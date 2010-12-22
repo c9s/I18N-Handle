@@ -20,8 +20,8 @@ MANIFEST			This list of files
 META.yml
 README.mkdn
 t/00_compile.t
-t/i18n-2.t
 t/i18n-gettext.t
+t/i18n-locale.t
 t/i18n-loc.t
 t/i18n/locale/cometqueen.pot
 t/i18n/locale/en/LC_MESSAGES/cometqueen.mo
