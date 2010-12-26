@@ -98,9 +98,9 @@ sub BUILD {
     $self->base( I18N::Handle::Locale->new( \%import ) );
     $self->base->init;
 
+    return $self if $args{no_global_loc};
 
     my $loc_name = $args{'loc'} || '_';
-
     if( $args{loc_func} ) {
         my $loc_func = $args{loc_func};
         {
@@ -156,7 +156,6 @@ sub _scan_locale_files {
     }
     return %langs;
 }
-
 
 sub speaking {
     my $self = shift;
@@ -334,11 +333,15 @@ will be found. can you can get these langauges:
 
 =over 4
 
-=item C<style> => I<style>  ... (Optional)
+=item no_global_loc => bool
+
+Do not install global locale method C<"_">. 
+
+=item style => style  ... (Optional)
 
 The style could be C<gettext>.
 
-=item C<loc> => I<global loc function name> (Optional)
+=item loc => global loc function name (Optional)
 
 The default global loc function name is C<_>. 
 
