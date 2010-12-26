@@ -32,3 +32,4 @@ t/i18n/locale/zh_tw/LC_MESSAGES/cometqueen.po
 t/i18n/po/en.po
 t/i18n/po/messages.pot
 t/i18n/po/zh_TW.po
+t/no-install.t
