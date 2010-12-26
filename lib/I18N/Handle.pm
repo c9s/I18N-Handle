@@ -243,7 +243,7 @@ it's I<language> => [ I<format> => I<source> ].
                 import => {
                         en => [ Gettext => 'po/en.po' ],
                         fr => [ Gettext => 'po/fr.po' ],
-                        jp => [ Gettext => 'po/jp.po' ],
+                        ja => [ Gettext => 'po/ja.po' ],
                 })->accept( qw(en fr) )->speak( 'en' );
 
 Or a simple way to import gettext po files:
@@ -254,17 +254,17 @@ This will transform the args to the args that C<import> option takes:
                 Gettext => {
                         en => 'po/en.po',
                         fr => 'po/fr.po',
-                        jp => [ 'po/jp.po' , 'po2/jp.po' ],
+                        ja => [ 'po/ja.po' , 'po2/ja.po' ],
                 })->accept( qw(en fr) )->speak( 'en' );
 
 
     print _('Hello world');
 
     $hl->speak( 'fr' );
-    $hl->speak( 'jp' );
-    $hl->speaking;  # return 'jp'
+    $hl->speak( 'ja' );
+    $hl->speaking;  # return 'ja'
 
-    my @langs = $hl->can_speak();  # return 'en', 'fr', 'jp'
+    my @langs = $hl->can_speak();  # return 'en', 'fr', 'ja'
 
 =head1 OPTIONS
 
@@ -279,7 +279,7 @@ Format could be I<Gettext | Msgcat | Slurp | Tie>.
                 Gettext => {
                         en => 'po/en.po',
                         fr => 'po/fr.po',
-                        jp => [ 'po/jp.po' , 'po2/jp.po' ],
+                        ja => [ 'po/ja.po' , 'po2/ja.po' ],
                 });
     $hl->speak( 'en' );
 
