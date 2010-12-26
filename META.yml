@@ -26,4 +26,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/c9s/I18N-Handle.git
-version: 0.042
+version: 0.05

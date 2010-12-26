@@ -95,11 +95,15 @@ will be found. can you can get these langauges:
 
 # OPTIONAL OPTIONS
 
-- `style` => _style_  ... (Optional)
+- no_global_loc => bool
+
+Do not install global locale method `"_"`. 
+
+- style => style  ... (Optional)
 
 The style could be `gettext`.
 
-- `loc` => _global loc function name_ (Optional)
+- loc => global loc function name (Optional)
 
 The default global loc function name is `_`. 
 
