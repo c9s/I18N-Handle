@@ -31,7 +31,7 @@ BEGIN {
     $hl->speak( 'en' );
     is( _(' pt') , ' pt' , 'en' );
 
-    my @langs = $hl->can_speak();
+    my @langs = sort $hl->can_speak();
     ok( @langs );
 
     is_deeply( \@langs , [ 'en', 'zh-tw' ] , '[ en , zh-tw ]' );
