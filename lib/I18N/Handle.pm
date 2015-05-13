@@ -464,7 +464,7 @@ return a list that currently supported.
 
 setup accept languages.
 
-    $hl->accpet( qw(en fr) );
+    $hl->accept( qw(en fr) );
 
 =head2 fallback( I<language> )
 
